@@ -31,13 +31,13 @@
 <!--   	<import resource="classpath:META-INF/cxf/cxf-extension-jaxrs-binding.xml"/> -->
   
   	<!-- <jaxws:endpoint 
-	  id="floristService" 
-	  implementor="com.ftd.services.florist.service.impl.FloristSearchServiceImpl" 
-	  address="/FloristService" /> -->
+	  id="userRestService" 
+	  implementor="com.sivalabs.services.rest.UserServiceImpl" 
+	  address="/UserService" /> -->
 	  
 	  <jaxws:endpoint 
-		  id="floristSearchWebService" 
-		  implementor="#floristSearchWS" 
-		  address="/FloristSearchService" />
+		  id="userRestService" 
+		  implementor="#userService" 
+		  address="/UserRestService" />
 	
 </beans>

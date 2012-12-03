@@ -367,12 +367,11 @@
 			<version>1.1.2</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.tuckey</groupId>
-		    <artifactId>urlrewritefilter</artifactId>
-		    <version>3.1.0</version>
+			<groupId>org.tuckey</groupId>
+			<artifactId>urlrewritefilter</artifactId>
+			<version>3.1.0</version>
 		</dependency>
-		
-        <!--  Testing -->
+		<!--  Testing -->
         <dependency>
              <groupId>junit</groupId>
              <artifactId>junit</artifactId>
