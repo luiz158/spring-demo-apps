@@ -121,6 +121,10 @@ public class Link implements Serializable
 	{
 		this.tags = tags;
 	}
+
+	public void addTag(Tag tag) {
+		this.getTags().add(tag);
+	}
     
     
 

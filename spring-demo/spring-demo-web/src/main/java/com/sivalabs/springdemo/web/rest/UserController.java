@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sivalabs.springdemo.entities.User;
-import com.sivalabs.springdemo.services.UserService;
+import com.sivalabs.springdemo.services.JLinksService;
 
 /**
  * @author skatam
@@ -29,7 +29,7 @@ public class UserController
 {
 
 	@Autowired
-	private UserService userService;
+	private JLinksService jLinksService;
 	
 	@Autowired
 	Mapper dozerMapper;
@@ -38,7 +38,7 @@ public class UserController
 	@ResponseBody
 	public List<User> listUsers(Model model, HttpServletRequest request) 
 	{
-		List<User> users = userService.findAllUsers();
+		List<User> users = jLinksService.findAllUsers();
 		List<User> cleanUsers = new ArrayList<User>();
 		dozerMapper.map(users, cleanUsers);
 		return cleanUsers;

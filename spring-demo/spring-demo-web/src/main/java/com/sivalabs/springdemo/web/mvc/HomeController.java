@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sivalabs.springdemo.entities.User;
-import com.sivalabs.springdemo.services.UserService;
+import com.sivalabs.springdemo.services.JLinksService;
 
 /**
  * @author Siva
@@ -18,7 +18,7 @@ import com.sivalabs.springdemo.services.UserService;
 public class HomeController
 {
 	@Autowired
-	private UserService userService;
+	private JLinksService jLinksService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginForm()
@@ -35,7 +35,7 @@ public class HomeController
 	
 	public String showUserProfile(Model model, @RequestParam("userId") Integer userId)
 	{
-		User user = this.userService.findUserById(userId);
+		User user = this.jLinksService.findUserById(userId);
 		model.addAttribute("USER_KEY", user);
 		return "user_profile";
 	}
