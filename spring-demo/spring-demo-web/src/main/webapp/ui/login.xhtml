@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+	<h:form>
+		<h:panelGrid columns="3" >
+			<p:outputLabel value="EmailId" for="loginEmail"/>
+			<p:inputText value="#{homeController.loginEmail}" id="loginEmail" 
+				required="true" requiredMessage="Enter EmailId"/>
+			<p:message for="loginEmail"></p:message>
+			
+			<p:outputLabel value="Password" for="loginPwd"/>
+			<p:password value="#{homeController.loginPwd}" id="loginPwd"
+				required="true" requiredMessage="Enter Password"/>
+			<p:message for="loginPwd"/>
+			
+			<p:commandButton value="Login" action="#{homeController.login}" ajax="false"/>
+			<p:messages globalOnly="true"></p:messages>
+			
+		</h:panelGrid>
+		
+	</h:form>
+</body> 
+</html>
