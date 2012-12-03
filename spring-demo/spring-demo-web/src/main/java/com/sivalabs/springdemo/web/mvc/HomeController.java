@@ -1,83 +1,43 @@
 package com.sivalabs.springdemo.web.mvc;
 
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sivalabs.springdemo.entities.User;
 import com.sivalabs.springdemo.services.UserService;
-import com.sivalabs.springdemo.web.utils.JSFUtils;
 
 /**
  * @author Siva
  *
  */
-@ManagedBean
-//@RequestScoped
-@Component
-@Scope("request")
+@Controller
 public class HomeController
 {
 	@Autowired
 	private UserService userService;
 	
-	private String loginEmail;
-	private String loginPwd;
-	
-	private List<User> users = null;
-	
-	public HomeController()
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String loginForm()
 	{
+		return "login";
 	}
 	
-	@PostConstruct
-	public void init()
+	@RequestMapping("welcome")
+	public String welcome(Model model)
 	{
-		
+		model.addAttribute("Welcome", "Welcome to AppStore!");
+		return "welcome";
 	}
 	
-	public List<User> getUsers()
+	public String showUserProfile(Model model, @RequestParam("userId") Integer userId)
 	{
-		if(users == null)
-		{
-			System.out.println("Loading from DB...");
-			users = userService.findAllUsers();	
-		}
-		return users;
-	}
-	
-	public String login()
-	{
-		boolean success = "admin@gmail.com".equals(loginEmail) && "admin".equals(loginPwd);
-		if(!success){
-			JSFUtils.addErrorMessage(null, "Invalid EmailId and Password.");
-		}
-		System.err.println(success);
-		return (success)? "welcome.jsf?faces-redirect=true" : "login";
-	}
-	public String getLoginEmail()
-	{
-		return loginEmail;
-	}
-
-	public void setLoginEmail(String loginEmail)
-	{
-		this.loginEmail = loginEmail;
-	}
-
-	public String getLoginPwd()
-	{
-		return loginPwd;
-	}
-
-	public void setLoginPwd(String loginPwd)
-	{
-		this.loginPwd = loginPwd;
+		User user = this.userService.findUserById(userId);
+		model.addAttribute("USER_KEY", user);
+		return "user_profile";
 	}
 	
 	

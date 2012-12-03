@@ -4,7 +4,7 @@
 
   <groupId>com.sivalabs</groupId>
   <artifactId>spring-demo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>pom</packaging>
 
   <name>spring-demo</name>
@@ -63,6 +63,7 @@
 	<modules>
     	<module>spring-demo-core</module>
     	<module>spring-demo-web</module>
+    <module>spring-demo-web-jsf</module>
   </modules>
   	
 	<dependencies>

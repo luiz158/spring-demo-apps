@@ -1,3 +1,3 @@
 <%
-response.sendRedirect("ui/login.jsf");
+response.sendRedirect("web/welcome");
 %>

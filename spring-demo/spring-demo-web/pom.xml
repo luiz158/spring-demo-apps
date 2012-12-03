@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
+	xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.sivalabs</groupId>
     <artifactId>spring-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
   </parent>
   <artifactId>spring-demo-web</artifactId>
   <packaging>war</packaging>
@@ -21,7 +22,7 @@
 	  <dependency>
 	  	<groupId>com.sivalabs</groupId>
 	  	<artifactId>spring-demo-core</artifactId>
-	  	<version>0.0.1-SNAPSHOT</version>
+	  	<version>0.0.1</version>
 	  </dependency>
 	  
 	  <dependency>
@@ -66,24 +67,6 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		
-		<!--  JSF 2 -->
-	        <dependency>
-				<groupId>com.sun.faces</groupId>
-				<artifactId>jsf-api</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>com.sun.faces</groupId>
-				<artifactId>jsf-impl</artifactId>
-			</dependency>
-	        <dependency>
-				<groupId>org.primefaces</groupId>
-				<artifactId>primefaces</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>org.primefaces.themes</groupId>
-				<artifactId>afterwork</artifactId>
-			</dependency>
-			
 		<dependency>
 			<groupId>org.tuckey</groupId>
 			<artifactId>urlrewritefilter</artifactId>
@@ -94,21 +77,6 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 		</dependency>
             
-      <!-- <dependency>
-		<groupId>org.hibernate</groupId>
-		<artifactId>hibernate-entitymanager</artifactId>
-		<scope>provided</scope>
-	</dependency> -->
-      <!-- 
-      <dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
-		</dependency> 
-		 -->
   </dependencies>
 
 </project>

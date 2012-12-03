@@ -2,7 +2,7 @@
 <!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.0//EN" "urlrewrite3.0.dtd">
 <urlrewrite default-match-type="wildcard">
 
-	<rule>
+	<!-- <rule>
 		<from>/web/**</from>
 		<to>/web/$1</to>
 	</rule>
@@ -10,6 +10,6 @@
 	<outbound-rule>
 		<from>/web/**</from>
 		<to>/web/$1</to>
-	</outbound-rule>
+	</outbound-rule> -->
 	
 </urlrewrite>
