@@ -19,7 +19,8 @@
 
 	<http pattern="/index.jsp" security="none"></http>
 	<http pattern="/web/login*" security="none"></http>
-
+	<http pattern="/resources" security="none" />
+	
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/web/*" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/web/admin/*" access="hasRole('ROLE_ADMIN')" />
@@ -28,13 +29,10 @@
 			authentication-failure-url="/web/login?error=1" />
 		<logout logout-success-url="/web/login" />
 	</http>
- 
+ 	
 	<authentication-manager>
-	  <authentication-provider>
-		<user-service>
-			<user name="admin" password="admin123" authorities="ROLE_USER, ROLE_ADMIN" />
-			<user name="test" password="test123" authorities="ROLE_USER" />
-		</user-service>
+	  <authentication-provider user-service-ref="customUserDetailsService">
+		<password-encoder ref="passwordEncoder"/>
 	  </authentication-provider>
 	</authentication-manager>
   	

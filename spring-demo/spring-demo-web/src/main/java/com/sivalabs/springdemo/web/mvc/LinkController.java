@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.sivalabs.springdemo.entities.Link;
 import com.sivalabs.springdemo.entities.Tag;
 import com.sivalabs.springdemo.entities.User;
-import com.sivalabs.springdemo.services.JLinksService;
+import com.sivalabs.springdemo.services.LinksService;
 
 /**
  * @author Siva
@@ -26,7 +26,7 @@ import com.sivalabs.springdemo.services.JLinksService;
 public class LinkController {
 
 	@Autowired
-	private JLinksService jLinksService;
+	private LinksService linksService;
 	
 		
 	@RequestMapping(value="/createLink", method=RequestMethod.GET)
@@ -51,7 +51,7 @@ public class LinkController {
 			tag.setDescription(tagName);
 			link.addTag(tag);
 		}
-		Link createdLink = jLinksService.createLink(link);
+		Link createdLink = linksService.createLink(link);
 		if(createdLink != null){
 			
 			request.setAttribute("INFO", "Link created successfully");			

@@ -15,9 +15,11 @@ import com.sivalabs.springdemo.entities.User;
 public interface UserRepository extends JpaRepository<User, Integer>
 {
 
-	@Query("select u from User u where u.email=?1 and u.password=?2")
-	User login(String email, String password);
+	@Query("select u from User u where u.userName=?1 and u.password=?2")
+	User login(String userName, String password);
 
 	User findUserByEmail(String email);
+
+	User findUserByUserName(String username);
 
 }

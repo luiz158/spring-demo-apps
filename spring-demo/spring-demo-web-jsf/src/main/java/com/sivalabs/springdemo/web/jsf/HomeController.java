@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.sivalabs.springdemo.entities.User;
-import com.sivalabs.springdemo.services.JLinksService;
+import com.sivalabs.springdemo.services.UserService;
 import com.sivalabs.springdemo.web.utils.JSFUtils;
 
 /**
@@ -24,7 +24,7 @@ import com.sivalabs.springdemo.web.utils.JSFUtils;
 public class HomeController
 {
 	@Autowired
-	private JLinksService jLinksService;
+	private UserService userService;
 	
 	private String loginEmail;
 	private String loginPwd;
@@ -46,7 +46,7 @@ public class HomeController
 		if(users == null)
 		{
 			System.out.println("Loading from DB...");
-			users = jLinksService.findAllUsers();	
+			users = userService.findAllUsers();	
 		}
 		return users;
 	}

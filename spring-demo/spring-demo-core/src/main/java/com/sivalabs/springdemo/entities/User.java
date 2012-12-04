@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,8 +36,8 @@ public class User implements Serializable
     @Column(name = "user_id")
     private Integer userId;
     
-    @Column(name = "email", unique=true, nullable=false)
-    private String email;
+    @Column(name = "username", unique=true, nullable=false)
+    private String userName;
 
     @Column(name = "password", nullable=false)
     private String password;
@@ -47,8 +48,14 @@ public class User implements Serializable
     @Column(name = "lastname")
     private String lastName;
     
+    @Column(name = "email", unique=true, nullable=false)
+    private String email;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
+    
+    @OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+    private Set<Role> roles = new HashSet<Role>();
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="creadtedBy")
     private Set<Link> submittedLinks = new HashSet<Link>();
@@ -71,14 +78,16 @@ public class User implements Serializable
         this.userId = userId;
     }
 
-	public User(Integer userId, String email, String password,
-			String firstName, String lastName)
+	public User(Integer userId, String userName, String password,
+			String firstName, String lastName, String email, Gender gender)
 	{
 		this.userId = userId;
-		this.email = email;
+		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.email = email;
+		this.gender = gender;
 	}
 
 	public Integer getUserId() {
@@ -96,6 +105,16 @@ public class User implements Serializable
 	public void setEmail(String email)
 	{
 		this.email = email;
+	}
+
+	public String getUserName()
+	{
+		return userName;
+	}
+
+	public void setUserName(String userName)
+	{
+		this.userName = userName;
 	}
 
 	public String getPassword()
@@ -163,6 +182,16 @@ public class User implements Serializable
 	public void setPreferences(Set<Preference> preferences)
 	{
 		this.preferences = preferences;
+	}
+
+	public Set<Role> getRoles()
+	{
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles)
+	{
+		this.roles = roles;
 	}
 
 }
