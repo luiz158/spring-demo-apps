@@ -64,6 +64,7 @@
     	<module>spring-demo-core</module>
     	<module>spring-demo-web</module>
     <module>spring-demo-web-jsf</module>
+    <module>spring-demo-rest</module>
   </modules>
   	
 	<dependencies>
