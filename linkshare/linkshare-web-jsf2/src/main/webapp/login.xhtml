@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+	<ui:define name="content">
+	    
+	    <div>
+	    	<h:messages />
+	    </div>
+	    <h:form>
+	    	<p>UserName : <h:inputText value="#{userController.loginUser.userName}" required="true"/> </p>
+	    	<p>Password : <h:inputSecret value="#{userController.loginUser.password}" required="true" /> </p>
+	    	<p><h:commandButton value="Login" action="#{userController.login()}"></h:commandButton> </p>
+	    </h:form>
+	    
+	    <br/>
+	    
+	    <h:form>
+	    	<p>UserName : <h:inputText value="#{userController.registerUser.userName}" required="true"/> </p>
+	    	<p>Password : <h:inputSecret value="#{userController.registerUser.password}" required="true" /> </p>
+	    	<p>EmailId : <h:inputText value="#{userController.registerUser.emailId}" required="true"/> </p>
+	    	<p><h:commandButton value="Register" action="#{userController.register()}"></h:commandButton> </p>
+	    </h:form>
+	    
+	</ui:define>
+	
+</ui:composition>

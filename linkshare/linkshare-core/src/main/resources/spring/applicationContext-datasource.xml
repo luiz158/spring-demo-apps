@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cloud="http://schema.cloudfoundry.org/spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						http://www.springframework.org/schema/jdbc 
+						http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+						http://schema.cloudfoundry.org/spring 
+						http://schema.cloudfoundry.org/spring/cloudfoundry-spring-0.6.xsd">
+	
+	
+	
+	<beans profile="dev">
+		
+		<jdbc:initialize-database data-source="dataSource" enabled="${execute_db_init_script}">
+			<jdbc:script location="classpath:sql/linkshare_mysql_db_init_script.sql"/>
+		</jdbc:initialize-database>	
+		
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+			<property name="url" value="${jdbc.url}"></property>
+			<property name="username" value="${jdbc.username}"></property>
+			<property name="password" value="${jdbc.password}"></property>
+			<property name="defaultAutoCommit" value="false"></property>
+			<property name="initialSize" value="0"></property>
+			<property name="maxActive" value="8"></property>
+			<property name="maxIdle" value="8"></property>
+			<property name="minIdle" value="0"></property>
+			<property name="testOnBorrow" value="true"></property>
+			<property name="testOnReturn" value="false"></property>
+			<property name="testWhileIdle" value="false"></property>
+			<property name="validationQuery" value="select 1"></property>
+			<property name="validationQueryTimeout" value="-1"></property>
+		</bean>
+     </beans>
+     
+     <beans profile="cloud">
+     	<cloud:data-source id="dataSource"/>
+     </beans>
+     
+</beans>

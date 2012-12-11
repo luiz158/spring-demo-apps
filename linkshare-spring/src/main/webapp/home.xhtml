@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="content">
+		<h:form>
+		<p:tabMenu activeIndex="0">
+		    <p:menuitem value="Home" url="/home.jsf" icon="ui-icon-star"/>
+		    <p:menuitem value="Post New Link" url="/newLink.jsf" icon="ui-icon-document" />
+		    <p:menuitem value="My Profile" url="/profile.jsf" icon="ui-icon-person"/>
+		    <p:menuitem value="Search" url="/search.jsf" icon="ui-icon-search"/>
+		    <p:menuitem value="Help" url="/help.jsf" icon="ui-icon-help" />
+		    <p:menuitem value="Logout" action="#{userController.logout()}"/>
+		</p:tabMenu>
+		</h:form>
+		<p:panel header="Links">
+		
+			<p:dataList value="#{linksController.links}" var="link" id="links"
+				        paginator="true" rows="3" effectSpeed="fast"
+				        paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
+				        type="none">
+		        <p:panel>
+		        	<h:outputLink value="#{link.url}" target="_blank">
+		        		<h:outputText value="#{link.title}" style="font-size:25px;"/>
+		        	</h:outputLink>  <br/>
+					<h:outputText value="#{link.description}" /> <br/>
+					<h:outputText value="Posted By" style="font-weight:bold"/> : 
+					<h:outputText value="#{link.postedBy.userName}" style="font-weight:bold" /><br/>
+		        </p:panel>   
+				
+		            
+		    </p:dataList>
+    
+			
+		</p:panel>
+		
+	
+	</ui:define>
+</ui:composition>

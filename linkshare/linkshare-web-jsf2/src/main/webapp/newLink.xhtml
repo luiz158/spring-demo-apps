@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="content">
+		
+		<p:tabMenu activeIndex="1">
+		    <p:menuitem value="Home" url="/home.jsf" icon="ui-icon-star"/>
+		    <p:menuitem value="Post New Link" url="/newLink.jsf" icon="ui-icon-search" />
+		    <p:menuitem value="My Profile" url="/profile.jsf" icon="ui-icon-document"/>
+		    <p:menuitem value="Search" url="/search.jsf" icon="ui-icon-wrench"/>
+		    <p:menuitem value="Help" url="/help.jsf" icon="ui-icon-person" />
+		</p:tabMenu>
+	<h:form>
+		<p:panelGrid columns="2">
+		    <f:facet name="header">
+		        Post New Link
+		    </f:facet>
+		
+		    <h:outputLabel for="title" value="Title: *" />
+		    <p:inputText id="title" value="#{linksController.newLink.title}" required="true" label="Title" />
+		
+		    <h:outputLabel for="url" value="URL: *" />
+		    <p:inputText id="url" value="#{linksController.newLink.url}" required="true" label="URL"/>
+		
+			<h:outputLabel for="description" value="Description: " />
+		    <p:inputText id="description" value="#{linksController.newLink.description}" label="description"/>
+		
+			
+		    <f:facet name="footer">
+		        <h:commandButton value="Save" action="#{linksController.saveLink()}" />
+		    </f:facet>
+		    
+		</p:panelGrid>
+	</h:form>
+	</ui:define>
+</ui:composition>
